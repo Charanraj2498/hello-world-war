@@ -8,6 +8,14 @@
 	<name>Hello World Web Application Repository</name>
 	<description>Simplest possible Java Webapp</description>
 
+	<distributionManagement>
+    <repository>
+        <id>helloworldwar</id>
+        <name>a0qeuluo5s9ex-artifactory-primary-0-releases</name>
+        <url>https://trialxrzh90.jfrog.io/artifactory/helloworldwar-libs-release</url>
+    </repository>
+</distributionManagement>
+
 	<build>
 		<plugins>
 			<plugin>
