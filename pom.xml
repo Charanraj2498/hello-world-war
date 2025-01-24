@@ -11,7 +11,7 @@
 	<distributionManagement>
     <repository>
         <id>helloworldwar</id>
-        <name>a0qeuluo5s9ex-artifactory-primary-0-releases</name>
+        <name>helloworldwar-libs-release</name>
         <url>https://trialxrzh90.jfrog.io/artifactory/helloworldwar-libs-release</url>
     </repository>
 </distributionManagement>
