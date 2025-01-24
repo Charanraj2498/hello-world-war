@@ -27,7 +27,7 @@ jobs:
           echo "<settings>
                   <servers>
                     <server>
-                      <id>hell-world-war</id>
+                      <id>helloworldwar</id>
                       <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
                       <password>${{ secrets.ARTIFACTORY_API_KEY }}</password>
                     </server>
