@@ -20,13 +20,14 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+        
     - name: Configure Maven settings
       run: |
           mkdir -p ~/.m2
           echo "<settings>
                   <servers>
                     <server>
-                      <id>helloworldwar</id>
+                      <id>hell-world-war</id>
                       <username>${{ secrets.ARTIFACTORY_USERNAME }}</username>
                       <password>${{ secrets.ARTIFACTORY_API_KEY }}</password>
                     </server>
