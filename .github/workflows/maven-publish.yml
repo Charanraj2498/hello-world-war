@@ -42,7 +42,7 @@ jobs:
     - name: SonarQube Scan
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Store the SonarQube token in GitHub Secrets
-      run: mvn clean verify sonar:sonar -Dsonar.projectKey=charanraj2498_hello-world-war -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.organization=Charanraj2498 -Dsonar.branch.name=master
+      run: mvn clean verify sonar:sonar -Dsonar.projectKey=charanraj2498_hello-world-war -Dsonar.host.url=http://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Dsonar.organization=Charanraj2498 -Dsonar.branch.name=master
 
     # Step 6: Wait for the Quality Gate to be successful
     - name: Wait for SonarCloud Quality Gate and Fail on Failure
