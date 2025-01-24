@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>manual deploy</title>
+<title>mAuto</title>
 </head>
 <body>
-	<h1>manual deploy</h1>
+	<h1>automation</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
