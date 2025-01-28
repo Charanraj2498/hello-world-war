@@ -12,6 +12,3 @@
 		<%= request.getRemoteAddr()  %></p>
 </body>
 
-
-
-
