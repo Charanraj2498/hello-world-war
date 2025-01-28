@@ -3,7 +3,7 @@
 <title>mAuto</title>
 </head>
 <body>
-	<h1>automation</h1>
+	<h1>this is test</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
