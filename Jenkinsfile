@@ -1,41 +1,42 @@
 pipeline {
     agent none
-    environment { 
-    ARTIFACTORY_CREDENTIALS = credentials('jfrog-credentials')
+    environment {
+        ARTIFACTORY_CREDENTIALS = credentials('jfrog_artifactory_credentials')
     }
-       stages 
-    {
-        stage('checkout') {    
-            agent {label 'build'}
-            steps {
-                sh 'mvn clean install'
-            }
-        }
-         stage('build') { 
-             agent {label 'build'}
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-        stage('publish') { 
-            agent {label 'build'}
-            steps {
-               sh 'mkdir -p ~/.m2'
-               sh '''
-                 echo "<settings>
-                          <servers>
-                            <server>
-                              <id>helloworldwar</id>
-                              <username>$ARTIFACTORY_CREDENTIALS_USR</username>
-                              <password>$ARTIFACTORY_CREDENTIALS_PSW</password>
-                      </server>
-                     </servers>
-                   </settings>" > ~/.m2/settings.xml
-              '''
-            sh 'cat ~/.m2/settings.xml'    
-            sh 'mvn clean deploy'
         
+    stages 
+    {
+        stage('checkout') {
+            agent { label 'build'}
+            steps {
+                sh 'ls'
+                sh 'pwd'
             }
+        }
+         stage('build') {
+             agent { label 'build'}
+            steps {
+                    sh 'mvn clean package'
+                }
+            }
+         stage('publish') { 
+             agent { label 'build'}
+            steps {
+                    sh 'mkdir -p ~/.m2'
+                    sh '''
+                    echo "<settings>
+                            <servers>
+                                <server>
+                                  <id>hello-world-war</id>
+                                  <username>$ARTIFACTORY_CREDENTIALS_USR</username>
+                                  <password>$ARTIFACTORY_CREDENTIALS_PSW</password>
+                                </server>
+                              </servers>
+                            </settings>" > ~/.m2/settings.xml
+                    '''
+                sh 'cat ~/.m2/settings.xml'
+                sh 'mvn clean deploy'
+            }    
         }
        stage('deploy') {
            agent { label 'deploy'}
