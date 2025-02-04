@@ -38,7 +38,7 @@ pipeline {
             }
         }
        stage('deploy') {
-           agent { label 'deployer'}
+           agent { label 'deploy'}
            steps {
                 sh 'curl ifconfig.me'
                 sh 'curl -L -u "${ARTIFACTORY_CREDENTIALS_USR}:${ARTIFACTORY_CREDENTIALS_PSW}" -O "http://3.91.150.156:8082/artifactory/jenkins-hello-world-libs-release-local/com/efsavage/hello-world-war/${BUILD_NUMBER}/hello-world-war-${BUILD_NUMBER}.war"'
