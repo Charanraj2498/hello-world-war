@@ -37,5 +37,12 @@ pipeline {
         
             }
         }
+        stage('deploy') {
+            agent {label 'build'}
+            steps {
+                sh 'curl -L -u "${ARTIFACTORY_CREDENTIALS_USR}:${ARTIFACTORY_CREDENTIALS_PSW}" -O "http://3.91.150.156:8082/artifactory/jenkins-hello-world-libs-release-local/com/efsavage/hello-world-war/15/hello-world-war-$(BUILD_NUMBER).war"'
+                sh 'ls'
+            }
+        }
     }
 }
