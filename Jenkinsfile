@@ -19,7 +19,8 @@ pipeline {
             steps {
                sh 'mvn clean deploy'
                sh 'mkdir -p ~/.m2'
-               sh 'echo "<settings>
+               sh '''
+                 echo "<settings>
                           <servers>
                             <server>
                               <id>helloworldwar</id>
@@ -28,7 +29,7 @@ pipeline {
                       </server>
                      </servers>
                    </settings>" > ~/.m2/settings.xml'
-
+              '''
             }
         }
     }
