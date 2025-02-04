@@ -8,7 +8,7 @@ pipeline {
         stage('checkout') {    
             agent {label 'build'}
             steps {
-                sh 'ls'
+                sh 'mvn clean install'
             }
         }
          stage('build') { 
