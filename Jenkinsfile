@@ -1,7 +1,7 @@
 pipeline {
     agent none
     environment {
-        ARTIFACTORY_CREDENTIALS = credentials('jfrog_artifactory_credentials')
+        ARTIFACTORY_CREDENTIALS = credentials('jfrog-credentials')
     }
         
     stages 
