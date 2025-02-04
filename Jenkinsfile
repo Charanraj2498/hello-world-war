@@ -1,21 +1,24 @@
 pipeline {
-    agent {label 'build'}
+    agent none
     environment { 
     ARTIFACTORY_CREDENTIALS = credentials('jfrog-credentials')
     }
        stages 
     {
-        stage('checkout') {             
+        stage('checkout') {    
+            agent {label 'build'}
             steps {
                 git 'https://github.com/Charanraj2498/hello-world-war.git'
             }
         }
          stage('build') { 
+             agent {label 'build'}
             steps {
                 sh 'mvn clean package'
             }
         }
         stage('publish') { 
+            agent {label 'build'}
             steps {
                sh 'mkdir -p ~/.m2'
                sh '''
