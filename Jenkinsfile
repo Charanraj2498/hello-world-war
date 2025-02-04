@@ -1,10 +1,10 @@
 pipeline {
-    agent {label build}
+    agent {label 'build'}
        stages 
     {
         stage('checkout') {             
             steps {
-                sh 'https://github.com/Charanraj2498/hello-world-war.git'
+                git 'https://github.com/Charanraj2498/hello-world-war.git'
             }
         }
          stage('build') { 
