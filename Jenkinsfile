@@ -17,7 +17,6 @@ pipeline {
         }
         stage('publish') { 
             steps {
-               sh 'mvn clean deploy'
                sh 'mkdir -p ~/.m2'
                sh '''
                  echo "<settings>
@@ -30,6 +29,9 @@ pipeline {
                      </servers>
                    </settings>" > ~/.m2/settings.xml'
               '''
+            sh 'cat ~/.m2/settings.xml'    
+            sh 'mvn clean deploy'
+        
             }
         }
     }
