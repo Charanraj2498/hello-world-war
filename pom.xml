@@ -11,8 +11,8 @@
 	<distributionManagement>
     <repository>
         <id>helloworldwar</id>
-        <name>helloworldwar-libs-release</name>
-        <url>http://23.22.81.163:8082/artifactory/helloworldwar-libs-release/</url>
+        <name>Jenkins-hello-world-libs-release</name>
+        <url>http://3.91.150.156:8081/artifactory/jenkins-hello-world-libs-release</url>
     </repository>
 </distributionManagement>
 
