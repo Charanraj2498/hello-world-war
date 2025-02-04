@@ -10,7 +10,7 @@
 
 	<distributionManagement>
     <repository>
-        <id>helloworldwar</id>
+        <id>hello-world-war</id>
         <name>jenkins-hello-world-libs-release</name>
         <url>http://3.91.150.156:8081/artifactory/jenkins-hello-world-libs-release</url>
     </repository>
@@ -29,7 +29,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.3.1</version>
+				<version>3.4.0</version>
 			</plugin>
                         <plugin>
                                 <groupId>org.sonarsource.scanner.maven</groupId>
