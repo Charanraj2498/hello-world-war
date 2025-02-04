@@ -12,13 +12,13 @@ pipeline {
             }
         }
          stage('build') { 
-             agent {label 'build'}
+             agent {label 'deploy'}
             steps {
                 sh 'mvn clean package'
             }
         }
         stage('publish') { 
-            agent {label 'build'}
+            agent {label 'deploy'}
             steps {
                sh 'mkdir -p ~/.m2'
                sh '''
