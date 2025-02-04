@@ -27,7 +27,7 @@ pipeline {
                               <password>$ARTIFACTORY_CREDENTIALS_PSW</password>
                       </server>
                      </servers>
-                   </settings>" > ~/.m2/settings.xml'
+                   </settings>" > ~/.m2/settings.xml
               '''
             sh 'cat ~/.m2/settings.xml'    
             sh 'mvn clean deploy'
