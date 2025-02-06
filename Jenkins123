@@ -1,4 +1,4 @@
-@Library('shared-lib@main') _
+@Library('shared-library@main') _
 pipeline {
     agent none
     environment {
@@ -10,19 +10,19 @@ pipeline {
         stage('checkout') {
             agent { label 'build'}
             steps {
-              checkoutStage()
+              stage_checkout()
             }
         }
          stage('build') {
              agent { label 'build'}
             steps {
-              buildStage()
+              stage_build()
                 }
             }
        stage('deploy') {
            agent { label 'deploy'}
            steps {
-            deployStage(env.BUILD_NUMBER, 'http:34.207.235.28/')
+            stage_deploy(env.BUILD_NUMBER, 'http:54.235.44.52 /')
            }
        }
     }   
