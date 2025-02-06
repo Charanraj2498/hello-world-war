@@ -3,7 +3,7 @@
 <title>PLM</title>
 </head>
 <body>
-	<h1>APTEAN</h1>
+	<h1>ProductLifeCycleManagenet</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
