@@ -22,7 +22,7 @@ pipeline {
        stage('deploy') {
            agent { label 'deploy'}
            steps {
-            stage_deploy(env.BUILD_NUMBER, 'http:http://34.207.235.28/')
+            stage_deploy(env.BUILD_NUMBER, 'http://34.207.235.28/')
            }
        }
     }   
