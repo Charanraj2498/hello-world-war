@@ -1,6 +1,6 @@
 ---
 - name: Configure Build Node
-  hosts: build_nodes  
+  hosts: "{{ target_ip | default('all') }}"  
   become: yes
 
   tasks:
