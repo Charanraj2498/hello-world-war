@@ -1,6 +1,10 @@
 pipeline {
     agent { label 'build-node' }  
 
+    parameters {
+        string(name: 'NODE_IP', defaultValue: '', description: 'Target node IP address')
+    }
+
     stages {
         stage('Checkout Code') {
             steps {
@@ -10,8 +14,9 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                sh 'ansible-playbook -i inventory.ini playbook.yml --extra-vars "target_ip=${NODE_IP}"'
+                sh "ansible-playbook -i inventory.ini playbook.yml --extra-vars 'target_ip=${NODE_IP}'"
             }
         }
     }
 }
+
