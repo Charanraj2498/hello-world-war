@@ -14,10 +14,16 @@ pipeline {
 
         stage('Generate Dynamic Inventory') {
             steps {
-                sh """
-                    echo '[target]' > inventory.ini
-                    echo '${NODE_IP}' >> inventory.ini
-                """
+                script {
+                    if (params.NODE_IP?.trim()) {
+                        sh """
+                            echo '[target]' > inventory.ini
+                            echo '${params.NODE_IP}' >> inventory.ini
+                        """
+                    } else {
+                        error("NODE_IP parameter is empty! Please provide a valid IP address.")
+                    }
+                }
             }
         }
 
