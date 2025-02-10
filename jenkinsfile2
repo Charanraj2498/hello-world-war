@@ -12,6 +12,15 @@ pipeline {
             }
         }
 
+        stage('Generate Dynamic Inventory') {
+            steps {
+                sh """
+                    echo '[target]' > inventory.ini
+                    echo '${NODE_IP}' >> inventory.ini
+                """
+            }
+        }
+
         stage('Run Ansible Playbook') {
             steps {
                 sh "ansible-playbook -i inventory.ini playbook.yml --extra-vars 'target_ip=${NODE_IP}'"
@@ -19,4 +28,3 @@ pipeline {
         }
     }
 }
-
