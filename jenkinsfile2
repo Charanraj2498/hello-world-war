@@ -1,24 +1,26 @@
 pipeline {
-    agent any  
-    stages {
-        stage('Clean Workspace') {
-            steps {
-                cleanWs()
-            }
-        }
+    agent { label 'build-node' }  // Runs on a node with label 'build-node'
 
+    stages {
         stage('Checkout Code') {
             steps {
                 git url: 'https://github.com/Charanraj2498/hello-world-war.git', branch: 'master'
             }
         }
 
+        stage('Build with Maven') {
+            steps {
+                sh 'mvn clean package'  // Builds the WAR/JAR file
+            }
+        }
+
         stage('Run Ansible Playbook') {
             steps {
                 ansiblePlaybook(
-                    playbook: 'playbook.yml',  // Updated playbook name
+                    playbook: 'playbook.yml',
                     inventory: 'inventory.ini',
-                    credentialsId: 'ansible-ssh-key'
+                    credentialsId: 'ansible-ssh-key',
+                    extraVars: [target_ip: '192.168.1.10']
                 )
             }
         }
