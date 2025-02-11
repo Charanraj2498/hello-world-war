@@ -3,12 +3,15 @@
   hosts: "{{ target_ip }}"
   become: true
   tasks:
-    
-    - name: Install required build tools
+    - name: Install dependencies 
       apt:
-        name: ["git", "maven", "openjdk-17-jdk"]
+        name:
+          - openjdk-11-jdk
+          - maven
+          - git
         state: present
-        Update_cache: yes
+        update_cache: yes
+      when: ansible_os_family == "Debian"
 
     - name: Clone the repository
       git:
