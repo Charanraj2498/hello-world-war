@@ -1,33 +1,22 @@
 ---
-- name: Configure Build Node
-  hosts: "{{ target_ip | default('all') }}"  
-  become: yes
-
+- name: Build Process on Ansible Slave
+  hosts: "{{ target_ip }}"
+  become: true
   tasks:
-    - name: Update package list
+    
+    - name: Install required build tools
       apt:
-        update_cache: yes
-
-    - name: Install required packages
-      apt:
-        name:
-          - python3
-          - python3-pip
-          - openjdk-11-jdk  
-          - curl
+        name: ["git", "maven", "openjdk-17-jdk"]
         state: present
+        Update_cache: yes
 
-    - name: Create Jenkins user
-      user:
-        name: jenkins
-        state: present
-        home: /home/jenkins
-        shell: /bin/bash
+    - name: Clone the repository
+      git:
+        repo: "https://github.com/Charanraj2498/hello-world-war.git"
+        dest: "/home/ubuntu/build"
+        version: "master"
 
-    - name: Set permissions for Jenkins home directory
-      file:
-        path: /home/jenkins
-        state: directory
-        owner: jenkins
-        group: jenkins
-        mode: '0755'
+    - name: Build the project with Maven
+      command: mvn clean package
+      args:
+        chdir: "/home/ubuntu/build"
