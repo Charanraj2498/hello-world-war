@@ -1,9 +1,6 @@
 pipeline {
     agent none
-    environment {
-        ARTIFACTORY_CREDENTIALS = credentials('jfrog-credentials')
-    }
-        
+  
     stages 
     {
         stage('checkout') {
@@ -14,13 +11,13 @@ pipeline {
             }
         }
          stage('build') {
-             agent { label 'build'}
+             agent { label 'builder'}
             steps {
                     sh 'mvn clean package'
                 }
             }
          stage('publish') { 
-             agent { label 'build'}
+             agent { label 'deployer'}
             steps {
                     sh 'mkdir -p ~/.m2'
                     sh '''
