@@ -19,7 +19,7 @@ pipeline {
 		stage('publish') {
 			steps {
 				sh """
-				docker login -u charanraj2498 -p 'Charan@2498'
+				sudo docker login -u charanraj2498 -p 'Charan@2498'
 				sudo docker tag tomcat:v1 charanraj2498/myimages:v1
 				sudo docker push charanraj2498/myimages:v1
 				"""
