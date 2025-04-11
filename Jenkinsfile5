@@ -20,7 +20,7 @@ pipeline {
 			steps {
 				sh """
 				docker login -u charanraj2498 -p Charan@2498
-				docker tag tomcat:v1 charanraj2498/myimages:v1
+				sudo docker tag tomcat:v1 charanraj2498/myimages:v1
 				docker push charanraj2498/myimages:v1
 				"""
 			}
@@ -33,8 +33,8 @@ pipeline {
  				docker ps
 				docker login -u charanraj2498 -p Charan@2498
 				docker pull charanraj2498/myimages:v1
-                                docker images
-				docker run -t -p 8090:8080 charanraj2498/myimages:v1
+                                sudo docker images
+				sudo docker run -t -p 8090:8080 charanraj2498/myimages:v1
 				"""
 			}
 		}
@@ -42,7 +42,7 @@ pipeline {
 		
 		post {
 			cleanup {
-				sh 'docker system prune -f'
+				sh 'sudo docker system prune -f'
 			}
 		}
 }
